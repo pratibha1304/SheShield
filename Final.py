@@ -18,9 +18,9 @@ from email import encoders
 import os
 
 # Email configuration
-EMAIL_ADDRESS = 'unclepincle@gmail.com'  # Your Gmail address
-EMAIL_PASSWORD = 'hssd hqqp lzkh sawa'  # Your Gmail App Password (not your regular password)
-RECIPIENT_EMAIL = 'tnbtsper30@gmail.com'  # Email address to receive emergency alerts
+EMAIL_ADDRESS = 'artescapissm@gmail.com'  # Your Gmail address
+EMAIL_PASSWORD = 'Psoni21304'  # Your Gmail App Password (not your regular password)
+RECIPIENT_EMAIL = 'sheshield7@gmail.com'  # Email address to receive emergency alerts
 SMTP_SERVER = 'smtp.gmail.com'
 SMTP_PORT = 587
 
@@ -39,7 +39,7 @@ stop_capture = False
 DB_CONFIG = {
     'host': 'localhost',
     'user': 'root',
-    'password': 'sagar13',
+    'password': 'pratibha13',
     'database': 'she'
 }
 
@@ -463,8 +463,9 @@ Accuracy: {'Network-based' if 'network' in location_data else 'IP-based'}"""
 # Function to send emergency SMS using Twilio
 def send_emergency_sms(emergency_contacts):
     try:
-        account_sid = 'AC2613cbf478b1ad0f0ccd2fc7f5c64e25'
-        auth_token = '44d89292c4978806ae71a6d8155a3994'
+        # Update these with your Twilio credentials
+        account_sid = 'ACc60dc2690e5187073f403f5cbab0f00f'  # Replace with your Twilio Account SID
+        auth_token = 'ffbb2854427181bb7c29a19820c15f97'    # Replace with your Twilio Auth Token
         client = Client(account_sid, auth_token)
 
         # Get detailed location
@@ -481,7 +482,7 @@ This is an automated emergency alert. Please respond immediately."""
             try:
                 message = client.messages.create(
                     body=message_body,
-                    from_='+1 947 813 5630',
+                    from_='+17627060872',  # Replace with your Twilio phone number
                     to=contact
                 )
                 print(f"SOS sent to {contact}")
@@ -544,13 +545,8 @@ safe_zones = [
 # Function to fetch red zones from the MySQL database
 def fetch_red_zones_from_db():
     try:
-        # Establish connection to the MySQL database
-        connection = mysql.connector.connect(
-            host='localhost',
-            user='root',  # Replace with your MySQL username
-            password='sagar13',  # Replace with your MySQL password
-            database='sheshield_db'  # Replace with your database name
-        )
+        # Use the existing DB_CONFIG instead of hardcoding values
+        connection = mysql.connector.connect(**DB_CONFIG)
         
         cursor = connection.cursor()
         # SQL query to fetch latitude and longitude of red zones
